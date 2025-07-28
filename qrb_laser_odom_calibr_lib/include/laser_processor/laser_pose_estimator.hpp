@@ -4,13 +4,15 @@
  */
 #ifndef LASER_POSE_ESTIMATOR_HPP_
 #define LASER_POSE_ESTIMATOR_HPP_
-#include <pcl/point_types.h>
-#include <pcl/common/common_headers.h>
 #include <pcl/PCLHeader.h>
+#include <pcl/common/common_headers.h>
+#include <pcl/point_types.h>
+
 #include <eigen3/Eigen/Core>
-#include <vector>
 #include <queue>
-#include "qrb_laser_odom_calibr_lib/calib_data.hpp"
+#include <vector>
+
+#include "calibrator/calib_data.hpp"
 
 namespace qrb
 {
@@ -27,7 +29,7 @@ public:
    * @param laser_datas. Input laser data set
    * @return void
    */
-  void frame2frame_pose_estimation(std::vector<Laser_Data> & laser_datas);
+  void frame2frame_pose_estimation(std::vector<LaserData> & laser_datas);
 };
 
 }  // namespace laser_odom_calibrator

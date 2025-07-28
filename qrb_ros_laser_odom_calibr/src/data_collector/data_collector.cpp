@@ -37,10 +37,10 @@ void DataCollector::laser_sub_callback(sensor_msgs::msg::LaserScan::ConstPtr las
         last_laser_time_ = laser_msg->header.stamp.sec;
       }
       last_laser_time_ = laser_msg->header.stamp.sec;
-      qrb::laser_odom_calibrator::Laser_Data laser_data;
+      qrb::laser_odom_calibrator::LaserData laser_data;
       laser_data.point_cloud = cumulative_point_cloud_;
       laser_data.can_be_used = true;
-      laser_data_set.push_back(laser_data);
+      laser_data_set.emplace_back(laser_data);
     } else {
       return;
     }
@@ -68,7 +68,7 @@ void DataCollector::odom_sub_callback(nav_msgs::msg::Odometry::ConstPtr odom_msg
     last_odom_time_ = odom_msg->header.stamp.sec;
   }
 
-  qrb::laser_odom_calibrator::Odom_Data odom_data;
+  qrb::laser_odom_calibrator::OdomData odom_data;
   odom_data.odom_pose_xy[0] = odom_msg->pose.pose.position.x;
   odom_data.odom_pose_xy[1] = odom_msg->pose.pose.position.y;
   Eigen::Quaterniond yaw_q;
@@ -80,7 +80,7 @@ void DataCollector::odom_sub_callback(nav_msgs::msg::Odometry::ConstPtr odom_msg
   odom_data.odom_pose_yaw_rotation = rotation_yaw.block(0, 0, 2, 2);
   odom_data.currrent_yaw = rotation_yaw.eulerAngles(2, 1, 0)[0];
   odom_data.can_be_used = true;
-  odom_data_set.push_back(odom_data);
+  odom_data_set.emplace_back(odom_data);
   last_odom_time_ = odom_msg->header.stamp.sec;
   odom_captured_ = true;
 }

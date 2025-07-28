@@ -11,10 +11,10 @@
   <depend>std_msgs</depend>
   <depend>sensor_msgs</depend>
   <depend>nav_msgs</depend>
-  <depend>PCL</depend>
-  <depend>OpenCV</depend>
-  <depend>Eigen</depend>
-  <depend>Qt</depend>
+  <depend>libpcl-dev</depend>
+  <depend>libopencv-dev</depend>
+  <depend>libeigen3-dev</depend>
+  <depend>qtbase5-dev</depend>
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
   <export>

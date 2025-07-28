@@ -4,12 +4,12 @@
  */
 #ifndef CALIBRATOR_HPP_
 #define CALIBRATOR_HPP_
-#include "laser_processor/laser_pose_estimator.hpp"
+#include "calibrator/calib_data.hpp"
+#include "extrinsic_solver/solver.hpp"
 #include "laser_processor/laser_data_processor.hpp"
+#include "laser_processor/laser_pose_estimator.hpp"
 #include "odom_processor/odom_data_processor.hpp"
 #include "parameters_io/parameters_io.hpp"
-#include "extrinsic_solver/solver.hpp"
-#include "calibrator/calib_data.hpp"
 #define MIN_DATA_SIZE 3
 
 namespace qrb
@@ -23,7 +23,7 @@ private:
   std::shared_ptr<LaserDataProcessor> laser_data_processor_;
   std::shared_ptr<OdomDataProcessor> odom_data_processor_;
   std::shared_ptr<ParametersIO> parameters_io_;
-  std::shared_ptr<Slover> extrinsic_solver_;
+  std::shared_ptr<Solver> extrinsic_solver_;
   double max_dist_seen_as_continuous_;
   double line_length_tolerance_;
   double ransac_fitline_dist_th_;
@@ -31,10 +31,9 @@ private:
   bool initialize();
 
 public:
-  Calibrator(std::vector<Laser_Data> & laser_data_set_in,
-      std::vector<Odom_Data> & odom_data_set_in);
-  std::vector<Laser_Data> laser_data_set;
-  std::vector<Odom_Data> odom_data_set;
+  Calibrator(std::vector<LaserData> & laser_data_set_in, std::vector<OdomData> & odom_data_set_in);
+  std::vector<LaserData> laser_data_set;
+  std::vector<OdomData> odom_data_set;
   /**
    * @Excute calibration
    * @param void

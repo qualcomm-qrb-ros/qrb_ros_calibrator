@@ -5,18 +5,20 @@
 
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-#include <QMainWindow>
+#include <pcl/io/pcd_io.h>
+
 #include <QDir>
 #include <QFileDialog>
+#include <QMainWindow>
 #include <QObject>
-#include <pcl/io/pcd_io.h>
+#include <chrono>
+#include <filesystem>
+#include <iomanip>
+#include <sstream>
+
 #include "adjustparameterswindow.h"
 #include "calibrator/calibrator.hpp"
 #include "data_collector/data_collector.hpp"
-#include <filesystem>
-#include <chrono>
-#include <iomanip>
-#include <sstream>
 namespace Ui
 {
 class MainWindow;
@@ -41,8 +43,8 @@ private:
   Ui::MainWindow * ui_;
   AdjustParametersWindow * adjust_parameters_window_;
   std::shared_ptr<qrb_ros::laser_odom_collector::DataCollector> data_collector_;
-  std::vector<qrb::laser_odom_calibrator::Laser_Data> laser_data_set_;
-  std::vector<qrb::laser_odom_calibrator::Odom_Data> odom_data_set_;
+  std::vector<qrb::laser_odom_calibrator::LaserData> laser_data_set_;
+  std::vector<qrb::laser_odom_calibrator::OdomData> odom_data_set_;
   std::shared_ptr<qrb::laser_odom_calibrator::Calibrator> calibrator_ = nullptr;
   std::string input_file_name_ = "parameters_input.yaml";
   void save_data();

@@ -8,20 +8,20 @@ namespace qrb
 {
 namespace laser_odom_calibrator
 {
-Slover::Slover()
+Solver::Solver()
 {
   diff_tolerance_laser_odom_ = 0.05;
   min_observe_num_ = MIN_OBSERVE_NUM;
 }
 
-Slover::~Slover() {}
-void Slover::set_tolerance(const double & diff_tolerance_laser_odom)
+Solver::~Solver() {}
+void Solver::set_tolerance(const double & diff_tolerance_laser_odom)
 {
   diff_tolerance_laser_odom_ = diff_tolerance_laser_odom;
 }
 
-bool Slover::solve_linear_equation(std::vector<Odom_Data> & odom_datas,
-    std::vector<Laser_Data> & laser_datas)
+bool Solver::solve_linear_equation(std::vector<OdomData> & odom_datas,
+    std::vector<LaserData> & laser_datas)
 {
   int observe_num = 0;
   for (size_t i = 0; i < laser_datas.size(); ++i) {
@@ -84,7 +84,7 @@ bool Slover::solve_linear_equation(std::vector<Odom_Data> & odom_datas,
   return true;
 }
 
-bool Slover::calibrate(std::vector<Odom_Data> & odom_datas, std::vector<Laser_Data> & laser_datas)
+bool Solver::calibrate(std::vector<OdomData> & odom_datas, std::vector<LaserData> & laser_datas)
 {
   bool calib = solve_linear_equation(odom_datas, laser_datas);
   if (calib == false) {
@@ -95,22 +95,20 @@ bool Slover::calibrate(std::vector<Odom_Data> & odom_datas, std::vector<Laser_Da
   }
 }
 
-void Slover::print_extrinsic_ladar2odom()
+void Solver::print_extrinsic_ladar2odom()
 {
   std::cout << "extrinsic laser to odom is :" << std::endl;
-  std::cout << "extrinsic_xy: "
-            << "\n"
-            << extrinsic_xy_ << std::endl;
+  std::cout << "extrinsic_xy: " << "\n" << extrinsic_xy_ << std::endl;
   std::cout << "extrinsic yaw: " << extrinsic_yaw_angle_ / 3.14 * 180 << std::endl;
 }
 
-void Slover::get_extrinsic(Eigen::Matrix2d & rotation, Eigen::Vector2d & translation)
+void Solver::get_extrinsic(Eigen::Matrix2d & rotation, Eigen::Vector2d & translation)
 {
   rotation = extrinsic_yaw_;
   translation = extrinsic_xy_;
 }
 
-void Slover::rotation2quaternion(const Eigen::Matrix2d & rotation, double * quaternion)
+void Solver::rotation2quaternion(const Eigen::Matrix2d & rotation, double * quaternion)
 {
   Eigen::Matrix3d rot3d;
   rot3d << rotation(0, 0), rotation(0, 1), 0.0, rotation(1, 0), rotation(1, 1), 0.0, 0.0, 0, 1.0;
@@ -121,7 +119,7 @@ void Slover::rotation2quaternion(const Eigen::Matrix2d & rotation, double * quat
   quaternion[3] = q.z();
 }
 
-void Slover::quaternion2rotation(const double * quaternion, Eigen::Matrix2d & rotation)
+void Solver::quaternion2rotation(const double * quaternion, Eigen::Matrix2d & rotation)
 {
   Eigen::Quaterniond q;
   q.w() = quaternion[0];

@@ -4,6 +4,7 @@
  */
 
 #include "main_window/adjustparameterswindow.h"
+
 #include "ui_adjustparameterswindow.h"
 
 AdjustParametersWindow::AdjustParametersWindow(QWidget * parent,

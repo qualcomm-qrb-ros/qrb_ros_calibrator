@@ -2,7 +2,6 @@
  * Copyright (c) 2024-2025 Qualcomm Innovation Center, Inc. All rights reserved.
  * SPDX-License-Identifier: BSD-3-Clause-Clear
  */
- 
 
 #include <opencv2/opencv.hpp>
 int main(int argc, char * argv[])

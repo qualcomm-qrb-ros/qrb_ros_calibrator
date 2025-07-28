@@ -3,10 +3,11 @@
  * SPDX-License-Identifier: BSD-3-Clause-Clear
  */
 
+#include <QApplication>
+#include <iostream>
+
 #include "data_collector/data_collector.hpp"
 #include "main_window/mainwindow.h"
-#include <iostream>
-#include <QApplication>
 int main(int argc, char * argv[])
 {
   rclcpp::init(argc, argv);

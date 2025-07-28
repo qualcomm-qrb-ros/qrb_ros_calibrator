@@ -9,7 +9,7 @@ namespace qrb
 {
 namespace laser_odom_calibrator
 {
-void OdomDataProcessor::frame2frame_pose_estimation(std::vector<Odom_Data> & odom_datas)
+void OdomDataProcessor::frame2frame_pose_estimation(std::vector<OdomData> & odom_datas)
 {
   for (size_t i = 1; i < odom_datas.size(); ++i) {
     Eigen::Matrix2d last_yaw_rotation = odom_datas[i - 1].odom_pose_yaw_rotation;

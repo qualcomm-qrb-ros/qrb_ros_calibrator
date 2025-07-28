@@ -4,11 +4,12 @@
  */
 
 #include "main_window/point_cloud_viewer.hpp"
-#include <vtkPoints.h>
+
+#include <vtkActor.h>
 #include <vtkCellArray.h>
+#include <vtkPoints.h>
 #include <vtkPolyData.h>
 #include <vtkPolyDataMapper.h>
-#include <vtkActor.h>
 #include <vtkProperty.h>
 
 PointCloudViewer::PointCloudViewer(QWidget * parent) : QMainWindow(parent)
@@ -19,7 +20,7 @@ PointCloudViewer::PointCloudViewer(QWidget * parent) : QMainWindow(parent)
   setCentralWidget(vtk_widget_);
 }
 
-void PointCloudViewer::load_cloud(const qrb::laser_odom_calibrator::Laser_Data & laser_data)
+void PointCloudViewer::load_cloud(const qrb::laser_odom_calibrator::LaserData & laser_data)
 {
   pcl::PointCloud<pcl::PointXYZ>::Ptr cloud = laser_data.point_cloud.makeShared();
   vtkSmartPointer<vtkPoints> points = vtkSmartPointer<vtkPoints>::New();
@@ -57,7 +58,7 @@ void PointCloudViewer::draw_line(const pcl::PointXYZ & p1, const pcl::PointXYZ &
   vtk_widget_->renderWindow()->Render();
 }
 
-void PointCloudViewer::updata_laser_data(const qrb::laser_odom_calibrator::Laser_Data & laser_data)
+void PointCloudViewer::updata_laser_data(const qrb::laser_odom_calibrator::LaserData & laser_data)
 {
   renderer_->RemoveAllViewProps();
   load_cloud(laser_data);

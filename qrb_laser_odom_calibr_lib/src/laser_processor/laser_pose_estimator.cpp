@@ -4,6 +4,7 @@
  */
 
 #include "laser_processor/laser_pose_estimator.hpp"
+
 namespace qrb
 {
 namespace laser_odom_calibrator
@@ -13,7 +14,7 @@ LaserPoseEstimator::LaserPoseEstimator() {}
 
 LaserPoseEstimator::~LaserPoseEstimator() {}
 
-void LaserPoseEstimator::frame2frame_pose_estimation(std::vector<Laser_Data> & laser_datas)
+void LaserPoseEstimator::frame2frame_pose_estimation(std::vector<LaserData> & laser_datas)
 {
   for (size_t i = 1; i < laser_datas.size(); ++i) {
     if (laser_datas[i].can_be_used == false) {

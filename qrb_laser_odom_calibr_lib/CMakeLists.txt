@@ -15,7 +15,7 @@ find_package(OpenCV REQUIRED)
 include_directories( ${PCL_INCLUDE_DIRS} )
 include_directories( ${OpenCV_INCLUDE_DIRS} )
 include_directories( ${PROJECT_SOURCE_DIR} )
-include_directories(include)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/)
 add_definitions( ${PCL_DEFINITIONS} )
 set(LIB_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/src/calibrator/calibrator.cpp
@@ -28,11 +28,10 @@ set(LIB_SOURCES
 add_library(qrb_laser_odom_calibr_lib SHARED ${LIB_SOURCES})
 target_link_libraries(qrb_laser_odom_calibr_lib ${PCL_LIBRARIES})
 target_link_libraries(qrb_laser_odom_calibr_lib ${OpenCV_LIBS})
-install(DIRECTORY
-        include/
-        DESTINATION include)
 install(TARGETS
         qrb_laser_odom_calibr_lib
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib)
-
+install(DIRECTORY
+        include/
+        DESTINATION include)

@@ -4,6 +4,7 @@
  */
 
 #include "main_window/mainwindow.h"
+
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget * parent) : QMainWindow(parent), ui_(new Ui::MainWindow)
@@ -174,8 +175,8 @@ bool MainWindow::load_data()
                                                                              "be "
                                                                              "loaded"));
   for (int i = 0; i < data_num; ++i) {
-    qrb::laser_odom_calibrator::Odom_Data odom_data;
-    qrb::laser_odom_calibrator::Laser_Data laser_data;
+    qrb::laser_odom_calibrator::OdomData odom_data;
+    qrb::laser_odom_calibrator::LaserData laser_data;
     ui_->textBrowser->append(
         QString::fromStdString("Load " + folder_path + "/laser_scan" + std::to_string(i) + ".pcd"));
     bool succeed1 = load_eigen_from_yaml(odom_data.odom_pose_xy, odom_data.odom_pose_yaw_rotation,

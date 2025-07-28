@@ -4,16 +4,17 @@
  */
 #ifndef CALIB_DATA_HPP_
 #define CALIB_DATA_HPP_
-#include <pcl/point_types.h>
-#include <pcl/common/common_headers.h>
 #include <pcl/PCLHeader.h>
+#include <pcl/common/common_headers.h>
+#include <pcl/point_types.h>
+
 #include <eigen3/Eigen/Core>
 
 namespace qrb
 {
 namespace laser_odom_calibrator
 {
-struct Laser_Data
+struct LaserData
 {
   pcl::PointCloud<pcl::PointXYZ> point_cloud;
   Eigen::Vector2d last2current_xy;
@@ -26,7 +27,7 @@ struct Laser_Data
   pcl::PointXYZ short_end_pt;
   bool can_be_used;
 };
-struct Odom_Data
+struct OdomData
 {
   Eigen::Vector2d odom_pose_xy;
   Eigen::Matrix2d odom_pose_yaw_rotation;

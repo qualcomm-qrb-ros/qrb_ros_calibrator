@@ -6,9 +6,10 @@
 #ifndef ADJUSTPARAMETERSWINDOW_H
 #define ADJUSTPARAMETERSWINDOW_H
 #include <QMainWindow>
+#include <QProgressDialog>
 #include <QString>
 #include <QWindow>
-#include <QProgressDialog>
+
 #include "calibrator/calibrator.hpp"
 #include "main_window/point_cloud_viewer.hpp"
 namespace Ui

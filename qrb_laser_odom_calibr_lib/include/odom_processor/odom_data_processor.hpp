@@ -4,8 +4,9 @@
  */
 #ifndef ODOM_DATA_PROCESSOR_HPP_
 #define ODOM_DATA_PROCESSOR_HPP_
-#include "qrb_laser_odom_calibr_lib/calib_data.hpp"
 #include <vector>
+
+#include "calibrator/calib_data.hpp"
 
 namespace qrb
 {
@@ -20,7 +21,7 @@ public:
    * @param laser_datas. Input odometry data set
    * @return N/A
    */
-  void frame2frame_pose_estimation(std::vector<qrb::laser_odom_calibrator::Odom_Data> & odom_datas);
+  void frame2frame_pose_estimation(std::vector<qrb::laser_odom_calibrator::OdomData> & odom_datas);
 };
 }  // namespace laser_odom_calibrator
 }  // namespace qrb

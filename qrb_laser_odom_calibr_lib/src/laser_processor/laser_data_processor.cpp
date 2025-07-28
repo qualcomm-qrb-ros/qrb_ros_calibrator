@@ -4,6 +4,7 @@
  */
 
 #include "laser_processor/laser_data_processor.hpp"
+
 namespace qrb
 {
 namespace laser_odom_calibrator
@@ -39,6 +40,7 @@ void LaserDataProcessor::set_laser_process_parameters(const double & max_dist_se
   seg_.setMaxIterations(ransac_max_iterations_);
   seg_.setDistanceThreshold(ransac_fitline_dist_th_);
 }
+
 void LaserDataProcessor::set_line_length(const double & long_length, const double & short_length)
 {
   long_length_ = long_length;
@@ -55,7 +57,7 @@ void LaserDataProcessor::update_parameters(const double & max_dist_seen_as_conti
   seg_.setDistanceThreshold(ransac_fitline_dist_th_);
 }
 
-void LaserDataProcessor::process_laser_data(Laser_Data & input_data)
+void LaserDataProcessor::process_laser_data(LaserData & input_data)
 {
   input_data.can_be_used = true;
   std::vector<pcl::ModelCoefficients> coefficients_set;
@@ -110,6 +112,7 @@ void LaserDataProcessor::seg_all_lines(pcl::PointCloud<pcl::PointXYZ> & source_p
     extractor_.filter(*cloud);
   }
 }
+
 double LaserDataProcessor::dist(const pcl::PointXYZ & a, const pcl::PointXYZ & b)
 {
   return sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y) + (a.z - b.z) * (a.z - b.z));
@@ -238,7 +241,7 @@ void LaserDataProcessor::filter_using_length(
 
 void LaserDataProcessor::calculate_parameters(const pcl::ModelCoefficients & long_line_parameter,
     const pcl::ModelCoefficients & short_line_parameter,
-    Laser_Data & laser_data)
+    LaserData & laser_data)
 {
   Eigen::Vector2d long_line_dir;
   Eigen::Vector2d short_line_dir;
@@ -262,7 +265,7 @@ void LaserDataProcessor::calculate_parameters(const pcl::ModelCoefficients & lon
 void LaserDataProcessor::normalize_parameters(
     const std::pair<pcl::PointXYZ, pcl::PointXYZ> & long_edge_endpts,
     const std::pair<pcl::PointXYZ, pcl::PointXYZ> & short_edge_endpts,
-    Laser_Data & laser_data)
+    LaserData & laser_data)
 {
   pcl::PointXYZ intersaction_point;
   intersaction_point.x = laser_data.intersaction_point[0];

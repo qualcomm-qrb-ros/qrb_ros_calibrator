@@ -4,25 +4,27 @@
  */
 #ifndef LASER_DATA_PROCESSOR_HPP_
 #define LASER_DATA_PROCESSOR_HPP_
-#include <pcl/point_types.h>
-#include <pcl/segmentation/sac_segmentation.h>
-#include <pcl/filters/extract_indices.h>
-#include <pcl/common/common_headers.h>
 #include <pcl/PCLHeader.h>
+#include <pcl/common/common_headers.h>
+#include <pcl/filters/extract_indices.h>
 #include <pcl/filters/statistical_outlier_removal.h>
-#include <pcl/kdtree/kdtree_flann.h>
-#include <pcl/kdtree/kdtree.h>
-#include <pcl/search/kdtree.h>
-#include <pcl/registration/icp.h>
 #include <pcl/io/pcd_io.h>
+#include <pcl/kdtree/kdtree.h>
+#include <pcl/kdtree/kdtree_flann.h>
+#include <pcl/point_types.h>
+#include <pcl/registration/icp.h>
+#include <pcl/registration/icp_nl.h>
+#include <pcl/registration/transformation_estimation.h>
 #include <pcl/registration/transformation_estimation_2D.h>
 #include <pcl/registration/transformation_estimation_lm.h>
-#include <pcl/registration/transformation_estimation.h>
-#include <pcl/registration/icp_nl.h>
+#include <pcl/search/kdtree.h>
+#include <pcl/segmentation/sac_segmentation.h>
+
 #include <eigen3/Eigen/Core>
-#include "qrb_laser_odom_calibr_lib/calib_data.hpp"
-#include <vector>
 #include <queue>
+#include <vector>
+
+#include "calibrator/calib_data.hpp"
 #define MIN_DIST_TWO_LINE 0.4
 
 namespace qrb
@@ -98,7 +100,7 @@ private:
    */
   void calculate_parameters(const pcl::ModelCoefficients & long_line_parameter,
       const pcl::ModelCoefficients & short_line_parameter,
-      Laser_Data & laser_data);
+      LaserData & laser_data);
   /**
    * @desc Normalize the line parameters
    * @param long_edge_endpts Two end points of the detected long line
@@ -108,7 +110,7 @@ private:
    */
   void normalize_parameters(const std::pair<pcl::PointXYZ, pcl::PointXYZ> & long_edge_endpts,
       const std::pair<pcl::PointXYZ, pcl::PointXYZ> & short_edge_endpts,
-      Laser_Data & laser_data);
+      LaserData & laser_data);
   /**
    * @desc Calculate the intersection point of two lines
    * @param line1 Input first line
@@ -161,7 +163,7 @@ public:
    * @param input_data Input laser data
    * @return void
    */
-  void process_laser_data(Laser_Data & input_data);
+  void process_laser_data(LaserData & input_data);
   LaserDataProcessor();
 };
 

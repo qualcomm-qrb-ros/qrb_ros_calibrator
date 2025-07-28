@@ -5,11 +5,12 @@
 
 #ifndef DATA_COLLECTOR_HPP_
 #define DATA_COLLECTOR_HPP_
+#include <vector>
+
+#include "calibrator/calib_data.hpp"
+#include "nav_msgs/msg/odometry.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "sensor_msgs/msg/laser_scan.hpp"
-#include "nav_msgs/msg/odometry.hpp"
-#include "calibrator/calib_data.hpp"
-#include <vector>
 namespace qrb_ros
 {
 namespace laser_odom_collector
@@ -18,8 +19,8 @@ class DataCollector : public rclcpp::Node
 {
 public:
   void start_capture();
-  std::vector<qrb::laser_odom_calibrator::Laser_Data> laser_data_set;
-  std::vector<qrb::laser_odom_calibrator::Odom_Data> odom_data_set;
+  std::vector<qrb::laser_odom_calibrator::LaserData> laser_data_set;
+  std::vector<qrb::laser_odom_calibrator::OdomData> odom_data_set;
   rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr laser_sub_{ nullptr };
   rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr odom_sub_{ nullptr };
   bool current_capture_succeed();

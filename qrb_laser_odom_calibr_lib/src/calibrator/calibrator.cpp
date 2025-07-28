@@ -8,8 +8,8 @@ namespace qrb
 {
 namespace laser_odom_calibrator
 {
-Calibrator::Calibrator(std::vector<Laser_Data> & laser_data_set_in,
-    std::vector<Odom_Data> & odom_data_set_in)
+Calibrator::Calibrator(std::vector<LaserData> & laser_data_set_in,
+    std::vector<OdomData> & odom_data_set_in)
   : laser_data_set(laser_data_set_in), odom_data_set(odom_data_set_in)
 {
   laser_pose_estimator_ = nullptr;
@@ -18,7 +18,10 @@ Calibrator::Calibrator(std::vector<Laser_Data> & laser_data_set_in,
   parameters_io_ = nullptr;
   extrinsic_solver_ = nullptr;
   min_data_size_ = MIN_DATA_SIZE;
-  initialize();
+  bool init_succeed = initialize();
+  if(!init_succeed){
+    throw std::runtime_error("Calibrator initalization failed! Check the input file");
+  }
 }
 
 bool Calibrator::initialize()
@@ -63,7 +66,7 @@ bool Calibrator::initialize()
       min_point_num_stop_ransac, min_proportion_stop_ransac);
   laser_data_processor_->set_line_length(long_edge_length, short_edge_length);
   odom_data_processor_ = std::make_shared<OdomDataProcessor>();
-  extrinsic_solver_ = std::make_shared<Slover>();
+  extrinsic_solver_ = std::make_shared<Solver>();
   extrinsic_solver_->set_tolerance(diff_tolerance_laser_odom);
   return initialize_done;
 }

@@ -5,8 +5,8 @@
 #ifndef PARAMETERS_IO_HPP_
 #define PARAMETERS_IO_HPP_
 #include <eigen3/Eigen/Core>
-#include <opencv2/opencv.hpp>
 #include <opencv2/core/eigen.hpp>
+#include <opencv2/opencv.hpp>
 
 namespace qrb
 {

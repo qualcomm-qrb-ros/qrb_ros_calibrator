@@ -19,7 +19,7 @@ Calibrator::Calibrator(std::vector<LaserData> & laser_data_set_in,
   extrinsic_solver_ = nullptr;
   min_data_size_ = MIN_DATA_SIZE;
   bool init_succeed = initialize();
-  if(!init_succeed){
+  if(!init_succeed) {
     throw std::runtime_error("Calibrator initalization failed! Check the input file");
   }
 }

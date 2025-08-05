@@ -35,6 +35,9 @@ void MainWindow::on_captureButton_clicked()
     rclcpp::spin_some(data_collector_);
   }
   ui_->textBrowser->append(QString::fromStdString("Capture current sueeced \n"));
+  if (!ui_->saveButton->isEnabled()) {
+    ui_->saveButton->setEnabled(true);
+  }
   ui_->loadButton->setEnabled(false);
   ui_->detectButton->setEnabled(true);
 }
@@ -52,7 +55,7 @@ void MainWindow::on_loadButton_clicked()
                                                                                              "d"));
     ui_->detectButton->setEnabled(true);
     ui_->captureButton->setEnabled(false);
-    ui_->saveButton->setEnabled(false);
+    ui_->saveButton->setEnabled(true);
   } else {
     ui_->textBrowser->append(QString::fromStdString("Load data failed"));
   }

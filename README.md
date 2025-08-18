@@ -24,7 +24,7 @@ cmake ..
 make
 sudo make install
 cd ../../
-colcon build --package-select qrb_ros_laser_odom_calibrator
+colcon build --packages-select qrb_ros_laser_odom_calibrator
 ```
 To build the 2D-LiDAR and Camera extrinsic parameter calibration tool:
 ```bash
@@ -36,7 +36,7 @@ cmake ..
 make
 sudo make install
 cd ../../
-colcon build --package-select qrb_ros_laser_camera_calibrator
+colcon build --packages-select qrb_ros_laser_camera_calibrator
 ```
 ## Run
 

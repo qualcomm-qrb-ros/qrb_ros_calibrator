@@ -70,7 +70,7 @@ void MainWindow::on_captureButton_clicked()
       rclcpp::spin_some(data_collector_);
     }
     if (calibrator_->find_chessboard(
-            data_collector_->[data_collector_->camera_data_set.size() - 1].image)) {
+            data_collector_->camera_data_set[data_collector_->camera_data_set.size() - 1].image)) {
       ui_->textBrowser->append(
           QString::fromStdString("Capture current laser data and image data sueeced \n"));
       ui_->detectButton->setEnabled(true);

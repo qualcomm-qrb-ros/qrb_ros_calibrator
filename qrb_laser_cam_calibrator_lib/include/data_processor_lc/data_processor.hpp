@@ -4,6 +4,8 @@
  */
 #ifndef DATA_PROCESSOR_HPP_
 #define DATA_PROCESSOR_HPP_
+#include <Eigen/Core>
+#include <Eigen/Dense>
 #include <opencv2/core/eigen.hpp>
 
 #include "data_processor_lc/image_processor.hpp"

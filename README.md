@@ -11,7 +11,7 @@ qrb_ros_calibrator provide the calibration tools as follow:
 ### Install the dependency
 ```bash
 sudo apt-get update
-sudo apt-get install libpcl-dev libeigen3-dev qt5-default ros-humble-nav2-* libceres-dev libopencv-dev qtbase5-dev qt5-qmake
+sudo apt-get install libunwind-dev libpcl-dev libeigen3-dev ros-humble-nav2-* libceres-dev libopencv-dev qtbase5-dev libqt5svg5-dev
 ```
 ### Build the tool
 To build the 2D-LiDAR and Odometry extrinsic parameter calibration tool:
@@ -24,7 +24,7 @@ cmake ..
 make
 sudo make install
 cd ../../
-colcon build --package-select qrb_ros_laser_odom_calibrator
+colcon build --packages-select qrb_ros_laser_odom_calibrator
 ```
 To build the 2D-LiDAR and Camera extrinsic parameter calibration tool:
 ```bash
@@ -36,7 +36,7 @@ cmake ..
 make
 sudo make install
 cd ../../
-colcon build --package-select qrb_ros_laser_camera_calibrator
+colcon build --packages-select qrb_ros_laser_camera_calibrator
 ```
 ## Run
 

@@ -58,11 +58,11 @@ void MainWindow::on_captureButton_clicked()
     }
     if (calibrator_->find_chessboard(data_collector_->laser_plane_image.laser_plane_image)) {
       ui_->textBrowser->append("First image for initialization captured!");
-      capture_laser_plane_image_ = true;
+      capture_laser_plane_image_ = false;
     } else {
       ui_->textBrowser->append(
           "First image for initialization captured failed! No cornor detected");
-      capture_laser_plane_image_ = false;
+      capture_laser_plane_image_ = true;
     }
   } else {
     data_collector_->start_capture();

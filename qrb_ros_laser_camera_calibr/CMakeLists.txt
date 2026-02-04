@@ -31,8 +31,8 @@ elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "(x86_64)|(i386)|(i686)")
   find_package(sensor_msgs REQUIRED)
   find_package(nav_msgs REQUIRED)
   find_package(nav_2d_msgs REQUIRED)
-  find_package(PCL REQUIRED )
-  find_package(Eigen3)
+  find_package(PCL REQUIRED)
+  find_package(Eigen3 REQUIRED)
   find_package(OpenCV REQUIRED)
   find_package(cv_bridge)
 
@@ -104,7 +104,7 @@ elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "(x86_64)|(i386)|(i686)")
           "PCL"
           "Qt5"
           "cv_bridge"
-          "Eigen"
+          "Eigen3"
   )
   ament_target_dependencies(
           qrb_ros_inputfile_template_generator

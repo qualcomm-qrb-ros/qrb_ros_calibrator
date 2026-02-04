@@ -25,8 +25,8 @@ elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "(x86_64)|(i386)|(i686)")
   find_package(sensor_msgs REQUIRED)
   find_package(nav_msgs REQUIRED)
   find_package(nav_2d_msgs REQUIRED)
-  find_package(PCL REQUIRED )
-  find_package(Eigen3)
+  find_package(PCL REQUIRED)
+  find_package(Eigen3 REQUIRED)
   find_package(OpenCV REQUIRED)
   set(CMAKE_AUTOUIC ON)
   set(CMAKE_AUTOMOC ON)
@@ -93,7 +93,7 @@ elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "(x86_64)|(i386)|(i686)")
           "nav_2d_msgs"
           "OpenCV"
           "PCL"
-          "Eigen"
+          "Eigen3"
           "Qt5"
   )
   ament_target_dependencies(

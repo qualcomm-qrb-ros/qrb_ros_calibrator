@@ -178,11 +178,17 @@ qrb_ros_calibrator provide the calibration tools as follow:
 
 
 ## 👨‍💻 Build
-### Install the dependency
+### Install the dependency for Ubuntu22.04 with ROS2 Humble
 ```bash
 sudo apt-get update
 sudo apt-get install libunwind-dev libpcl-dev libeigen3-dev ros-humble-nav2-* libceres-dev libopencv-dev qtbase5-dev libqt5svg5-dev
 ```
+### Install the dependency for Ubuntu24.04 with ROS2 Jazzy
+```bash
+sudo apt-get update
+sudo apt-get install libunwind-dev libpcl-dev libeigen3-dev ros-jazzy-nav2-* libceres-dev libopencv-dev qtbase5-dev libqt5svg5-dev
+```
+
 ### Build the tool
 To build the 2D-LiDAR and Odometry extrinsic parameter calibration tool:
 ```bash
@@ -237,6 +243,7 @@ Edit the parameters_input.yaml, and give the long_edge_length and short_edge_len
 
 ### Running the calibrator
 ```bash
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 ros2 run qrb_ros_laser_odom_calibrator qrb_ros_laser_odom_calibrator
 ```
 ### Data Capture
@@ -349,6 +356,7 @@ User need to change the above parameters in parameters_input.yaml file according
 
 ### Running the calibrator
 ```bash
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 ros2 run qrb_ros_laser_camera_calibrator qrb_ros_laser_camera_calibrator
 ```
 ### Data Capture

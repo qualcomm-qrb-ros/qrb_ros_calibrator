@@ -7,7 +7,12 @@
 #include <opencv2/opencv.hpp>
 
 #include "calibrator_lc/calib_data.hpp"
+#include "rclcpp/version.h"
+#if RCLCPP_VERSION_MAJOR >= 20
+#include "cv_bridge/cv_bridge.hpp"
+#else
 #include "cv_bridge/cv_bridge.h"
+#endif
 #include "rclcpp/rclcpp.hpp"
 #include "sensor_msgs/msg/compressed_image.hpp"
 #include "sensor_msgs/msg/image.hpp"

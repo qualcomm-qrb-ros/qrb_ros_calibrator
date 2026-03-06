@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(qrb_laser_odom_calibr_lib VERSION 1.0.1)
+project(qrb_laser_odom_calibr_lib VERSION 1.0.2)
 if(NOT CMAKE_C_STANDARD)
   set(CMAKE_C_STANDARD 99)
 endif()

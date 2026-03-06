@@ -4,3 +4,8 @@
 
 - Initial version release for Ubuntu22.04 PC
 - Contributors: Mengwei Tao
+
+## 1.0.2 (2026-3-6)
+
+- Supports both ROS Humble and ROS Jazzy
+- Contributors: Mengwei Tao

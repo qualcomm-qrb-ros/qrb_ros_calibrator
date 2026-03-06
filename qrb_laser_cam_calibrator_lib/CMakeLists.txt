@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(qrb_laser_cam_calibrator_lib  VERSION 1.0.1)
+project(qrb_laser_cam_calibrator_lib  VERSION 1.0.2)
 #set(CMAKE_BUILD_TYPE debug)
 # Default to C99
 if(NOT CMAKE_C_STANDARD)

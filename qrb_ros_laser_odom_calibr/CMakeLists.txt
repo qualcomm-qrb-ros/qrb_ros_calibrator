@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(qrb_ros_laser_odom_calibrator VERSION 1.0.1)
+project(qrb_ros_laser_odom_calibrator VERSION 1.0.2)
 if(CMAKE_SYSTEM_PROCESSOR MATCHES "(aarch64)|(arm)")
   add_custom_target(skip_build ALL
   COMMAND ${CMAKE_COMMAND} -E echo "Skipped building on ${CMAKE_SYSTEM_PROCESSOR}"

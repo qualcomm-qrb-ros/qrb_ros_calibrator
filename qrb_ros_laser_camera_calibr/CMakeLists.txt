@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(qrb_ros_laser_camera_calibrator VERSION 1.0.1)
+project(qrb_ros_laser_camera_calibrator VERSION 1.0.2)
 #set(CMAKE_BUILD_TYPE debug)
 # Default to C99
 #if(CMAKE_SYSTEM_PROCESSOR MATCHES "(x86_64)|(i386)|(i686)")

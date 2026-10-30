@@ -1,3 +1,6 @@
+> [!NOTE]
+> This repository is currently migrating to ROS 2 Lyrical. Documentation may still reference Jazzy, and some features may not be fully supported yet.
+
 <div align="center">
   <h1>QRB ROS CALIBRATOR</h1>
   <p>ROS Packages for Sensor Extrinsic Parameters Calibration</p>
@@ -409,4 +412,3 @@ See also the list of [contributors](https://github.com/your/project/contributors
 ## 📜 License
 
 Project is licensed under the [BSD-3-clause License](https://spdx.org/licenses/BSD-3-Clause.html). See [LICENSE](./LICENSE) for the full license text.
-
